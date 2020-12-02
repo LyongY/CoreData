@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		191F5B0F25765C260050E02D /* DBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F5B0E25765C260050E02D /* DBObject.swift */; };
 		191F5B1325765FD90050E02D /* ManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191F5B1225765FD90050E02D /* ManagedObject.swift */; };
 		1937EE0A256DFBD400556E82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE09256DFBD400556E82 /* AppDelegate.swift */; };
 		1937EE0C256DFBD400556E82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE0B256DFBD400556E82 /* SceneDelegate.swift */; };
@@ -18,16 +17,16 @@
 		1937EE19256DFBD500556E82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1937EE17256DFBD500556E82 /* LaunchScreen.storyboard */; };
 		1937EE23256E00F500556E82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE22256E00F500556E82 /* CoreDataStack.swift */; };
 		1937EE29256E1BBA00556E82 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE28256E1BBA00556E82 /* Device.swift */; };
-		1937EE2E256E212800556E82 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE2D256E212800556E82 /* RootViewController.swift */; };
 		1937EE31256E255500556E82 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE30256E255500556E82 /* Managed.swift */; };
 		195A375B256FA5EC00BCF2CE /* DeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A375A256FA5EC00BCF2CE /* DeviceDetailViewController.swift */; };
 		195A375E256FACE500BCF2CE /* DeviceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A375D256FACE500BCF2CE /* DeviceDetailViewModel.swift */; };
 		19ED99E325772496000C6263 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED99E225772496000C6263 /* Manager.swift */; };
+		19ED99F72577A8B0000C6263 /* DBObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED99F62577A8B0000C6263 /* DBObject.swift */; };
+		19ED99FA2577A8BE000C6263 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED99F92577A8BE000C6263 /* RootViewController.swift */; };
 		EFBDB3316FC27A2AFF879155 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F7988FCAAB1B6972A65255 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		191F5B0E25765C260050E02D /* DBObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DBObject.swift; path = ../../../../../../../../DBObject.swift; sourceTree = "<group>"; };
 		191F5B1225765FD90050E02D /* ManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
 		1937EE06256DFBD400556E82 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1937EE09256DFBD400556E82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,11 +39,12 @@
 		1937EE1A256DFBD500556E82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1937EE22256E00F500556E82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1937EE28256E1BBA00556E82 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		1937EE2D256E212800556E82 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = ../../../../../../../RootViewController.swift; sourceTree = "<group>"; };
 		1937EE30256E255500556E82 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
 		195A375A256FA5EC00BCF2CE /* DeviceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailViewController.swift; sourceTree = "<group>"; };
 		195A375D256FACE500BCF2CE /* DeviceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailViewModel.swift; sourceTree = "<group>"; };
 		19ED99E225772496000C6263 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		19ED99F62577A8B0000C6263 /* DBObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBObject.swift; sourceTree = "<group>"; };
+		19ED99F92577A8BE000C6263 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		42DFC3A22B19155A13F18DC2 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		798E24E767436F207BA9E3F7 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		C9F7988FCAAB1B6972A65255 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +96,7 @@
 				1937EE09256DFBD400556E82 /* AppDelegate.swift */,
 				1937EE0B256DFBD400556E82 /* SceneDelegate.swift */,
 				1937EE0D256DFBD400556E82 /* ViewController.swift */,
-				1937EE2D256E212800556E82 /* RootViewController.swift */,
+				19ED99F92577A8BE000C6263 /* RootViewController.swift */,
 				195A375A256FA5EC00BCF2CE /* DeviceDetailViewController.swift */,
 				195A375D256FACE500BCF2CE /* DeviceDetailViewModel.swift */,
 				1937EE0F256DFBD400556E82 /* Main.storyboard */,
@@ -111,9 +111,9 @@
 		1937EE21256E009200556E82 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				19ED99F62577A8B0000C6263 /* DBObject.swift */,
 				1937EE22256E00F500556E82 /* CoreDataStack.swift */,
 				1937EE30256E255500556E82 /* Managed.swift */,
-				191F5B0E25765C260050E02D /* DBObject.swift */,
 				191F5B1225765FD90050E02D /* ManagedObject.swift */,
 				19ED99E225772496000C6263 /* Manager.swift */,
 			);
@@ -254,11 +254,11 @@
 				1937EE23256E00F500556E82 /* CoreDataStack.swift in Sources */,
 				195A375E256FACE500BCF2CE /* DeviceDetailViewModel.swift in Sources */,
 				191F5B1325765FD90050E02D /* ManagedObject.swift in Sources */,
-				191F5B0F25765C260050E02D /* DBObject.swift in Sources */,
 				1937EE0E256DFBD400556E82 /* ViewController.swift in Sources */,
+				19ED99FA2577A8BE000C6263 /* RootViewController.swift in Sources */,
 				1937EE0A256DFBD400556E82 /* AppDelegate.swift in Sources */,
-				1937EE2E256E212800556E82 /* RootViewController.swift in Sources */,
 				19ED99E325772496000C6263 /* Manager.swift in Sources */,
+				19ED99F72577A8B0000C6263 /* DBObject.swift in Sources */,
 				1937EE29256E1BBA00556E82 /* Device.swift in Sources */,
 				1937EE31256E255500556E82 /* Managed.swift in Sources */,
 				1937EE14256DFBD400556E82 /* Demo.xcdatamodeld in Sources */,
