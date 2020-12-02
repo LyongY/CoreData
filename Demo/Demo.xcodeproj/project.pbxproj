@@ -111,9 +111,9 @@
 		1937EE21256E009200556E82 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				19ED99F62577A8B0000C6263 /* DBObject.swift */,
 				1937EE22256E00F500556E82 /* CoreDataStack.swift */,
 				1937EE30256E255500556E82 /* Managed.swift */,
+				19ED99F62577A8B0000C6263 /* DBObject.swift */,
 				191F5B1225765FD90050E02D /* ManagedObject.swift */,
 				19ED99E225772496000C6263 /* Manager.swift */,
 			);
