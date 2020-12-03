@@ -15,7 +15,6 @@ final class DBDevice: DBObject {
     @NSManaged var password: String
 }
 
-class Device: ManagedObject {
-    lazy var managed: DBDevice = newEntity
-    var context: NSManagedObjectContext!
+class Device: ManagedObject<DBDevice> {
+
 }

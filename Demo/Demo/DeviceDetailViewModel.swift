@@ -27,11 +27,12 @@ class DeviceDetailViewModel {
         
         saved = saveTap.withLatestFrom(info).flatMapLatest({ (info) in
             Observable<Bool>.create { (observer) -> Disposable in
-                device.save { (managed) in
-                    managed.address = info.address
-                    managed.port = info.port
-                    managed.username = info.username
-                    managed.password = info.password
+                Managers.device.add { () -> Device in
+                    device.managed.address = info.address
+                    device.managed.port = info.port
+                    device.managed.username = info.username
+                    device.managed.password = info.password
+                    return device
                 } completion: { (success) in
                     observer.onNext(success)
                 }

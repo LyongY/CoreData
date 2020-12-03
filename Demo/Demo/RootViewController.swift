@@ -43,6 +43,10 @@ class RootViewController: UIViewController {
         navigationItem.rightBarButtonItem = addBarbutton
         
         setupTableView()
+        
+        
+        
+
     }
 
     func setupTableView() {
@@ -66,21 +70,61 @@ class RootViewController: UIViewController {
         dataSource.titleForHeaderInSection = { dataSource, index in
             dataSource.sectionModels[index].headerr
         }
-        
-        Observable<Int>.create { (_) -> Disposable in
-            Disposables.create()
-        }
-        
+                
         let request = DBDevice.sortedFetchRequest
         request.fetchBatchSize = 20
         request.returnsObjectsAsFaults = false
 
-        let rrr = CoreDataStack.default.mainContext.rx.entities(fetchRequest: request)
-        rrr.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
-            cell.textLabel?.text = "\(model.address)"
-            cell.detailTextLabel?.text = "\(model.port)"
+//        let rrr = CoreDataStack.default.mainContext.rx.entities(fetchRequest: request)
+//        rrr.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
+//            cell.textLabel?.text = "\(model.address)"
+//            cell.detailTextLabel?.text = "\(model.port)"
+//        }.disposed(by: disposeBag)
+        
+//        更换为Manager<DBDevice, Device>
+                                                              
+//        rr = Managers.device.rx.observeWeakly([Device].self, "managedObjects").map { $0 ?? [] }
+//
+//        rr.subscribe { (obj) in
+//            print(obj)
+//        } onError: { (err) in
+//            print(err)
+//        } onCompleted: {
+//            print("compleeted")
+//        } onDisposed: {
+//            print("disposed")
+//        }.disposed(by: disposeBag)
+        
+        
+//        let ee = Managers.device.rx.observeWeakly([Device].self, "uuuu").map { $0 ?? [] }
+        
+        Managers.device.$managedObjects.behaviorRelay.subscribe { (obj) in
+            print(obj)
+        } onError: { (err) in
+            print(err)
+        } onCompleted: {
+            print("compleeted")
+        } onDisposed: {
+            print("disposed")
         }.disposed(by: disposeBag)
+
+
+        
+        Managers.device.$managedObjects.behaviorRelay.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
+            cell.textLabel?.text = "\(model.managed.address)"
+            cell.detailTextLabel?.text = "\(model.managed.port)"
+        }.disposed(by: disposeBag)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            Managers.device.managedObjects[1].save { (managed) in
+//                managed.address = "2222"
+//            } completion: { (suu) in
+//                print("eeeee \(suu)")
+//            }
+//        }
     }
+    
+    var rr: Observable<[Device]>!
 }
 
 struct CustomData {

@@ -10,5 +10,5 @@ import CoreData
 
 class DBObject: NSManagedObject, Managed {
     @NSManaged var uid: Int64
-    var mamaged: Any?
+    var mamaged: AnyObject?
 }
