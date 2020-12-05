@@ -2,7 +2,7 @@
 //  DeviceDetailViewController.swift
 //  Demo
 //
-//  Created by Raysharp666 on 2020/11/26.
+//  Created by LyongY on 2020/11/26.
 //
 
 import UIKit

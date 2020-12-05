@@ -2,7 +2,7 @@
 //  PropertyWrapper+Manager.swift
 //  Demo
 //
-//  Created by Raysharp666 on 2020/12/3.
+//  Created by LyongY on 2020/12/3.
 //
 
 import Foundation

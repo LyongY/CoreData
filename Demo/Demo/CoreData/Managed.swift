@@ -2,7 +2,7 @@
 //  Managed.swift
 //  Demo
 //
-//  Created by Raysharp666 on 2020/11/25.
+//  Created by LyongY on 2020/11/25.
 //
 
 import Foundation
@@ -25,7 +25,7 @@ extension Managed {
 extension Managed where Self: DBObject {
     
     static var defaultSortDescriptors: [NSSortDescriptor] {
-        [NSSortDescriptor(key: #keyPath(uid), ascending: true)]
+        [NSSortDescriptor(key: #keyPath(index), ascending: true)]
     }
     
     static var entityName: String { entity().name! }

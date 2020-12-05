@@ -2,7 +2,7 @@
 //  ManagedObject.swift
 //  Demo
 //
-//  Created by Raysharp666 on 2020/12/1.
+//  Created by LyongY on 2020/12/1.
 //
 
 import Foundation
@@ -52,11 +52,6 @@ extension ManagedObject where DBObjectType: Managed {
                 CoreDataStack.default.mainContext.perform {
                     let tempEntity = CoreDataStack.default.mainContext.object(with: self.managed.objectID) as! DBObjectType
                     do {
-                        if self.managed.uid == 0 {
-                            let count = try self.context!.count(for: DBObjectType.sortedFetchRequest) + 1
-                            tempEntity.mamaged = self
-                            tempEntity.uid = Int64(count)
-                        }
                         try CoreDataStack.default.mainContext.save()
                         self.managed = tempEntity
                         self.context = CoreDataStack.default.mainContext
@@ -74,20 +69,10 @@ extension ManagedObject where DBObjectType: Managed {
                 }
             }
         } else {
-            context!.perform {
-                do {
-                    let count = try self.context!.count(for: DBObjectType.sortedFetchRequest) + 1
-                    self.context!.performChanges {
-                        if self.managed.uid == 0 {
-                            self.managed.uid = Int64(count)
-                        }
-                        changes(self.managed)
-                    } completion: { (success) in
-                        completion(success)
-                    }
-                } catch {
-                    completion(false)
-                }
+            context!.performChanges {
+                changes(self.managed)
+            } completion: { (success) in
+                completion(success)
             }
         }
     }

@@ -2,7 +2,7 @@
 //  RootViewController.swift
 //  Demo
 //
-//  Created by Raysharp666 on 2020/11/25.
+//  Created by LyongY on 2020/11/25.
 //
 
 import UIKit
@@ -60,45 +60,13 @@ class RootViewController: UIViewController {
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
         ])
         
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionCustomData>.init { (dataSource, tableView, indexPath, item) -> UITableViewCell in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            cell.textLabel?.text = "\(item.addr)"
-            cell.detailTextLabel?.text = "\(item.port)"
-            return cell
-        }
+        Managers.device.$managedObjects.behaviorRelay.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
+            cell.textLabel?.text = "\(model.managed.address)"
+            cell.detailTextLabel?.text = "\(model.managed.port)"
+        }.disposed(by: disposeBag)
         
-        dataSource.titleForHeaderInSection = { dataSource, index in
-            dataSource.sectionModels[index].headerr
-        }
-                
-        let request = DBDevice.sortedFetchRequest
-        request.fetchBatchSize = 20
-        request.returnsObjectsAsFaults = false
-
-//        let rrr = CoreDataStack.default.mainContext.rx.entities(fetchRequest: request)
-//        rrr.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
-//            cell.textLabel?.text = "\(model.address)"
-//            cell.detailTextLabel?.text = "\(model.port)"
-//        }.disposed(by: disposeBag)
-        
-//        更换为Manager<DBDevice, Device>
-                                                              
-//        rr = Managers.device.rx.observeWeakly([Device].self, "managedObjects").map { $0 ?? [] }
-//
-//        rr.subscribe { (obj) in
-//            print(obj)
-//        } onError: { (err) in
-//            print(err)
-//        } onCompleted: {
-//            print("compleeted")
-//        } onDisposed: {
-//            print("disposed")
-//        }.disposed(by: disposeBag)
-        
-        
-//        let ee = Managers.device.rx.observeWeakly([Device].self, "uuuu").map { $0 ?? [] }
-        
-        Managers.device.$managedObjects.behaviorRelay.subscribe { (obj) in
+        let device = Managers.device.managedObjects[0]
+        device.channelManager.$managedObjects.behaviorRelay.throttle(.seconds(1), scheduler: MainScheduler()).subscribe { (obj) in
             print(obj)
         } onError: { (err) in
             print(err)
@@ -108,18 +76,33 @@ class RootViewController: UIViewController {
             print("disposed")
         }.disposed(by: disposeBag)
 
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            device.addChannel()
+        }
         
-        Managers.device.$managedObjects.behaviorRelay.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
-            cell.textLabel?.text = "\(model.managed.address)"
-            cell.detailTextLabel?.text = "\(model.managed.port)"
-        }.disposed(by: disposeBag)
-        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            Managers.device.add { () -> Device in
+//                let device = Device()
+//                device.managed.address = "12345"
+//                device.managed.port = 33333
+//                device.managed.username = "3333"
+//                device.managed.password = "333"
+//                return device
+//            } completion: { (suc) in
+//                print(suc)
+//            }
+//        }
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 //            Managers.device.managedObjects[1].save { (managed) in
 //                managed.address = "2222"
 //            } completion: { (suu) in
 //                print("eeeee \(suu)")
+//            }
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            let device = Managers.device.managedObjects[1]
+//            Managers.device.delete(device) { (suc) in
+//                print(suc)
 //            }
 //        }
     }

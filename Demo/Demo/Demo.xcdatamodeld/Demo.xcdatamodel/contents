@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DBChannel" representedClassName=".DBChannel" syncable="YES">
+        <attribute name="deviceUUID" optional="YES" attributeType="String"/>
+        <attribute name="index" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="DBDevice" representedClassName=".DBDevice" syncable="YES">
         <attribute name="address" attributeType="String" defaultValueString="221"/>
+        <attribute name="index" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="password" attributeType="String" defaultValueString="pwd"/>
         <attribute name="port" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="username" attributeType="String" defaultValueString="user"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="DBDevice" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="DBDevice" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="DBChannel" positionX="-63" positionY="27" width="128" height="104"/>
     </elements>
 </model>
