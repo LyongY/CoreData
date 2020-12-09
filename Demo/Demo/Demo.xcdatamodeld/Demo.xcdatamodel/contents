@@ -6,6 +6,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DBDevice" inverseName="channels" inverseEntity="DBDevice"/>
     </entity>
     <entity name="DBDevice" representedClassName=".DBDevice" syncable="YES">
         <attribute name="address" attributeType="String" defaultValueString="221"/>
@@ -14,9 +15,10 @@
         <attribute name="port" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="username" attributeType="String" defaultValueString="user"/>
         <attribute name="uuid" optional="YES" attributeType="String"/>
+        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DBChannel" inverseName="device" inverseEntity="DBChannel"/>
     </entity>
     <elements>
-        <element name="DBDevice" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="DBChannel" positionX="-63" positionY="27" width="128" height="104"/>
+        <element name="DBChannel" positionX="-63" positionY="27" width="128" height="119"/>
+        <element name="DBDevice" positionX="-63" positionY="-18" width="128" height="134"/>
     </elements>
 </model>

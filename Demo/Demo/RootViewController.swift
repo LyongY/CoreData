@@ -65,20 +65,20 @@ class RootViewController: UIViewController {
             cell.detailTextLabel?.text = "\(model.managed.port)"
         }.disposed(by: disposeBag)
         
-        let device = Managers.device.managedObjects[0]
-        device.channelManager.$managedObjects.behaviorRelay.throttle(.seconds(1), scheduler: MainScheduler()).subscribe { (obj) in
-            print(obj)
-        } onError: { (err) in
-            print(err)
-        } onCompleted: {
-            print("compleeted")
-        } onDisposed: {
-            print("disposed")
-        }.disposed(by: disposeBag)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            device.addChannel()
-        }
+//        let device = Managers.device.managedObjects[0]
+//        device.channelManager.$managedObjects.behaviorRelay.throttle(.seconds(1), scheduler: MainScheduler()).subscribe { (obj) in
+//            print(obj)
+//        } onError: { (err) in
+//            print(err)
+//        } onCompleted: {
+//            print("compleeted")
+//        } onDisposed: {
+//            print("disposed")
+//        }.disposed(by: disposeBag)
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            device.addChannel()
+//        }
         
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 //            Managers.device.add { () -> Device in

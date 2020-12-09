@@ -18,6 +18,7 @@
 		1937EE23256E00F500556E82 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE22256E00F500556E82 /* CoreDataStack.swift */; };
 		1937EE29256E1BBA00556E82 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE28256E1BBA00556E82 /* Device.swift */; };
 		1937EE31256E255500556E82 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1937EE30256E255500556E82 /* Managed.swift */; };
+		19501D33257DB49E005ACC6A /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19501D32257DB49E005ACC6A /* DemoTests.swift */; };
 		195A375B256FA5EC00BCF2CE /* DeviceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A375A256FA5EC00BCF2CE /* DeviceDetailViewController.swift */; };
 		195A375E256FACE500BCF2CE /* DeviceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A375D256FACE500BCF2CE /* DeviceDetailViewModel.swift */; };
 		19C496042578B8EF00C56C4F /* PropertyWrapper+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C496032578B8EF00C56C4F /* PropertyWrapper+Observable.swift */; };
@@ -28,6 +29,16 @@
 		19ED99FA2577A8BE000C6263 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED99F92577A8BE000C6263 /* RootViewController.swift */; };
 		EFBDB3316FC27A2AFF879155 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F7988FCAAB1B6972A65255 /* Pods_Demo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19501D35257DB49E005ACC6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1937EDFE256DFBD400556E82 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1937EE05256DFBD400556E82;
+			remoteInfo = Demo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		191F5B1225765FD90050E02D /* ManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObject.swift; sourceTree = "<group>"; };
@@ -43,6 +54,9 @@
 		1937EE22256E00F500556E82 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		1937EE28256E1BBA00556E82 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		1937EE30256E255500556E82 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		19501D30257DB49E005ACC6A /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		19501D32257DB49E005ACC6A /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
+		19501D34257DB49E005ACC6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195A375A256FA5EC00BCF2CE /* DeviceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailViewController.swift; sourceTree = "<group>"; };
 		195A375D256FACE500BCF2CE /* DeviceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDetailViewModel.swift; sourceTree = "<group>"; };
 		19C496032578B8EF00C56C4F /* PropertyWrapper+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PropertyWrapper+Observable.swift"; sourceTree = "<group>"; };
@@ -65,6 +79,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19501D2D257DB49E005ACC6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -80,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1937EE08256DFBD400556E82 /* Demo */,
+				19501D31257DB49E005ACC6A /* DemoTests */,
 				1937EE07256DFBD400556E82 /* Products */,
 				3EEC5C3EB9460C12D7068332 /* Pods */,
 				137F75CD8DD6A7C53E3E927A /* Frameworks */,
@@ -90,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				1937EE06256DFBD400556E82 /* Demo.app */,
+				19501D30257DB49E005ACC6A /* DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +160,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		19501D31257DB49E005ACC6A /* DemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				19501D32257DB49E005ACC6A /* DemoTests.swift */,
+				19501D34257DB49E005ACC6A /* Info.plist */,
+			);
+			path = DemoTests;
+			sourceTree = "<group>";
+		};
 		3EEC5C3EB9460C12D7068332 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +200,24 @@
 			productReference = 1937EE06256DFBD400556E82 /* Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		19501D2F257DB49E005ACC6A /* DemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19501D39257DB49E005ACC6A /* Build configuration list for PBXNativeTarget "DemoTests" */;
+			buildPhases = (
+				19501D2C257DB49E005ACC6A /* Sources */,
+				19501D2D257DB49E005ACC6A /* Frameworks */,
+				19501D2E257DB49E005ACC6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19501D36257DB49E005ACC6A /* PBXTargetDependency */,
+			);
+			name = DemoTests;
+			productName = DemoTests;
+			productReference = 19501D30257DB49E005ACC6A /* DemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -179,6 +229,10 @@
 				TargetAttributes = {
 					1937EE05256DFBD400556E82 = {
 						CreatedOnToolsVersion = 12.2;
+					};
+					19501D2F257DB49E005ACC6A = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 1937EE05256DFBD400556E82;
 					};
 				};
 			};
@@ -196,6 +250,7 @@
 			projectRoot = "";
 			targets = (
 				1937EE05256DFBD400556E82 /* Demo */,
+				19501D2F257DB49E005ACC6A /* DemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -208,6 +263,13 @@
 				1937EE19256DFBD500556E82 /* LaunchScreen.storyboard in Resources */,
 				1937EE16256DFBD500556E82 /* Assets.xcassets in Resources */,
 				1937EE11256DFBD400556E82 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19501D2E257DB49E005ACC6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +341,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		19501D2C257DB49E005ACC6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19501D33257DB49E005ACC6A /* DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19501D36257DB49E005ACC6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1937EE05256DFBD400556E82 /* Demo */;
+			targetProxy = 19501D35257DB49E005ACC6A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1937EE0F256DFBD400556E82 /* Main.storyboard */ = {
@@ -455,6 +533,44 @@
 			};
 			name = Release;
 		};
+		19501D37257DB49E005ACC6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LyongY.DemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Debug;
+		};
+		19501D38257DB49E005ACC6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = LyongY.DemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -472,6 +588,15 @@
 			buildConfigurations = (
 				1937EE1E256DFBD500556E82 /* Debug */,
 				1937EE1F256DFBD500556E82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19501D39257DB49E005ACC6A /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19501D37257DB49E005ACC6A /* Debug */,
+				19501D38257DB49E005ACC6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

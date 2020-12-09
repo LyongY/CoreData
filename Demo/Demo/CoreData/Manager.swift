@@ -54,14 +54,8 @@ class Manager<U: DBObject, T: ManagedObject<U>>:NSObject, NSFetchedResultsContro
             
             // 添加index
             // handleObjects里有就从handleObjects里取, 否则从managedObjects中取
-            var index: Int64 = 1
-            
-            if manager.handleObjects.last != nil {
-                index = manager.handleObjects.last!.managed.index + 1
-            } else {
-                index = (manager.managedObjects.last?.managed.index ?? 0) + 1
-            }
-            item.managed.index = index
+            let startIndex: Int64 = self.lastIndex() + 1
+            item.managed.index = startIndex
             
             manager.handleObjects.append(item)
             
@@ -72,6 +66,47 @@ class Manager<U: DBObject, T: ManagedObject<U>>:NSObject, NSFetchedResultsContro
                 completion(success)
             }
         }
+    }
+    
+    func add(count: Int, itemsBlock: ([U]) -> Void) -> Bool {
+        guard Thread.current.isMainThread else {
+            fatalError("要在主线程")
+        }
+        var array: [U] = []
+        
+        let startIndex: Int64 = self.lastIndex() + 1
+        for index in 0..<Int64(count) {
+            let managed: U = CoreDataStack.default.mainContext.insertObject()
+            managed.index = startIndex + index
+            managed.uuid = uniqueUUID()
+            array.append(managed)
+        }
+        itemsBlock(array)
+        
+        let manager = Manager<U, T>.default
+        manager.handleObjects.append(contentsOf: array.map {
+            let managedObj = T()
+            managedObj.context = CoreDataStack.default.mainContext
+            managedObj.managed = $0
+            return managedObj
+        })
+        let result = CoreDataStack.default.mainContext.saveOrRollback()
+        // 消除 handleObjects 中已添加的对象
+        manager.handleObjects = manager.handleObjects.filter {
+            !manager.managedObjects.contains($0)
+        }
+        return result
+    }
+    
+    func lastIndex() -> Int64 {
+        let manager = Manager<U, T>.default // 所有托管对象从默认Manager中添加, 以防止多manager时index对不上
+        var lastIndex: Int64 = 1
+        if manager.handleObjects.last != nil {
+            lastIndex = manager.handleObjects.last!.managed.index
+        } else {
+            lastIndex = (manager.managedObjects.last?.managed.index ?? 0)
+        }
+        return lastIndex
     }
     
     func delete(_ item: T, completion: @escaping (_ success: Bool) -> Void) {
@@ -86,6 +121,17 @@ class Manager<U: DBObject, T: ManagedObject<U>>:NSObject, NSFetchedResultsContro
         }) { (success) in
             completion(true)
         }
+    }
+    
+    func delete(_ items: [T]) -> Bool {
+        guard Thread.current.isMainThread else {
+            fatalError("不是主线程")
+        }
+        for item in items {
+            CoreDataStack.default.mainContext.delete(item.managed)
+        }
+        let result = CoreDataStack.default.mainContext.saveOrRollback()
+        return result
     }
     
     // MARK: - FetchedResultsController
@@ -111,6 +157,7 @@ class Manager<U: DBObject, T: ManagedObject<U>>:NSObject, NSFetchedResultsContro
     }
     
     init(_ fetchRequest: NSFetchRequest<U>) {
+        let manager = Manager<U, T>.default
         frc = NSFetchedResultsController(fetchRequest: fetchRequest,
                                          managedObjectContext: CoreDataStack.default.mainContext,
                                          sectionNameKeyPath: nil,
@@ -118,9 +165,7 @@ class Manager<U: DBObject, T: ManagedObject<U>>:NSObject, NSFetchedResultsContro
         do {
             try frc.performFetch()
             managedObjects = (frc.fetchedObjects ?? []).map { (dbObj) in
-                let managedObj = T()
-                managedObj.context = CoreDataStack.default.mainContext
-                managedObj.managed = dbObj
+                let managedObj = manager.managedObjects.filter{ $0.managed == dbObj }.first!
                 return managedObj
             }
         } catch {
@@ -132,17 +177,27 @@ class Manager<U: DBObject, T: ManagedObject<U>>:NSObject, NSFetchedResultsContro
     }
     
     internal func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        let new = (self.frc.fetchedObjects ?? []).map { (managed) -> T in
-            // 包含了返回已创建的对象, 未包含则从handleObjects中取, 取不到则创建新的
-            if self.managedObjects.map({ $0.managed }).contains(managed) {
-                return self.managedObjects.filter({ $0.managed == managed}).first!
-            } else {
-                let managedObj = self.handleObjects.filter({ $0.managed == managed }).first ?? T()
-                managedObj.context = CoreDataStack.default.mainContext
-                managedObj.managed = managed
-                return managedObj
+        let manager = Manager<U, T>.default
+        if self == manager {
+            // 处理默认Manager
+            let new = (manager.frc.fetchedObjects ?? []).map { (managed) -> T in
+                // 包含了返回已创建的对象, 未包含则从handleObjects中取, 取不到则创建新的
+                if manager.managedObjects.map({ $0.managed }).contains(managed) {
+                    return manager.managedObjects.filter({ $0.managed == managed}).first!
+                } else {
+                    let managedObj = manager.handleObjects.filter({ $0.managed == managed }).first ?? T()
+                    managedObj.context = CoreDataStack.default.mainContext
+                    managedObj.managed = managed
+                    return managedObj
+                }
             }
+            manager.managedObjects = new
+        } else {
+            // 从默认manager中取
+            let new = (frc.fetchedObjects ?? []).map { (dbObj) -> T in
+                manager.managedObjects.filter{ $0.managed == dbObj }.first!
+            }
+            self.managedObjects = new
         }
-        self.managedObjects = new
     }
 }
