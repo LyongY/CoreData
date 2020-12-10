@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Channel" representedClassName=".Channel" syncable="YES" codeGenerationType="class">
+        <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Device" inverseName="channels" inverseEntity="Device"/>
+    </entity>
+    <entity name="Device" representedClassName=".Device" syncable="YES" codeGenerationType="class">
+        <attribute name="address" attributeType="String" defaultValueString=""/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="password" attributeType="String" defaultValueString=""/>
+        <attribute name="port" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="username" attributeType="String" defaultValueString=""/>
+        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Channel" inverseName="device" inverseEntity="Channel"/>
+    </entity>
+    <elements>
+        <element name="Device" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="Channel" positionX="-54" positionY="-9" width="128" height="59"/>
+    </elements>
+</model>
