@@ -38,16 +38,28 @@ class DevicesViewController: UIViewController {
     }
     
     func bindViewModel() {
-        addBarbutton.rx.tap.subscribe(onNext: {
+        addBarbutton.rx.tap.subscribe(onNext: { [weak self] in
             let vc = DetailViewController.createFromStoryboard()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: rx.disposeBag)
-        
+                
         viewModel.dataSource.bind(to: tableView.rx.items(cellIdentifier: "cell")) { index, model, cell in
             guard let cell = cell as? DevicesViewControllerCell else { return }
             cell.address.text = model.address
             cell.port.text = "\(model.port)"
         }.disposed(by: rx.disposeBag)
+        
+        tableView.rx.modelSelected(Device.self).subscribe(onNext: { [weak self] device in
+            let vc = DetailViewController.createFromStoryboard()
+            vc.device = device
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: rx.disposeBag)
+                
+        tableView.rx.modelDeleted(Device.self).map { (device) -> Bool in
+            return Manager<Device>.default.delete(item: device)
+        }.map { $0 ? "Success" : "Failed"}
+        .bind(to: MessageBox.default.rx.message)
+        .disposed(by: rx.disposeBag)
     }
 
     /*

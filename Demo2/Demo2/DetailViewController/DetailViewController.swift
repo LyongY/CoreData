@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    var device: Device?
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var portTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -33,17 +33,23 @@ class DetailViewController: UIViewController {
     }
     
     func bindViewModel() {
+        if let device = device {
+            viewModel.device = device
+            addressTextField.text = device.address
+            portTextField.text = "\(device.port)"
+            usernameTextField.text = device.username
+            passwordTextField.text = device.password
+        }
+
         viewModel.saveEnabel.drive(saveBarButton.rx.isEnabled).disposed(by: rx.disposeBag)
+                
+        viewModel.saveTapped.drive(onNext: { [weak self] success in
+            if success {
+                self?.navigationController?.popViewController(animated: true)
+            }
+        }).disposed(by: rx.disposeBag)
         
-        viewModel.saveTapped.drive { (succ) in
-            print("next \(succ)")
-        } onCompleted: {
-            print("onCompleted")
-        } onDisposed: {
-            print("onDisposed")
-        }.disposed(by: rx.disposeBag)
-        
-    
+        viewModel.saveTapped.map({ $0 ? "Success" : "Failed"}).drive(MessageBox.default.rx.message).disposed(by: rx.disposeBag)
     }
 
     /*

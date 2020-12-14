@@ -29,6 +29,7 @@ extension Managed where Self: NSManagedObject {
     }
     
     static func insertFromMain() -> Self {
-        NSEntityDescription.insertNewObject(forEntityName: entityName, into: DataBase.default.viewContext) as! Self
+        guard Thread.current.isMainThread else { fatalError() }
+        return NSEntityDescription.insertNewObject(forEntityName: entityName, into: DataBase.default.viewContext) as! Self
     }
 }

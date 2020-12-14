@@ -14,7 +14,7 @@ class DetailViewModel {
     var device: Device?
     
     let saveEnabel: Driver<Bool>
-    let saveTapped: Driver<Bool>
+    private(set) var saveTapped: Driver<Bool>!
     
     init(address: ControlProperty<String?>,
          port: ControlProperty<String?>,
@@ -37,19 +37,40 @@ class DetailViewModel {
         }).asDriver(onErrorJustReturn: false)
         
         let saving = BehaviorRelay(value: false)
+                
+        saveEnabel = Driver.combineLatest(validInfo, saving.asDriver()).map { $0 && !$1 }
         
         saveTapped = save.withLatestFrom(info).flatMapLatest { (info) in
             Observable<Bool>.create { (observer) -> Disposable in
                 saving.accept(true)
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    saving.accept(false)
-                    observer.onNext(true)
+                let device = self.device ?? Device.insertFromMain()
+                device.address = info.address
+                device.port = info.port
+                device.username = info.username
+                device.password = info.password
+                
+                var result = false
+                if let device = self.device {
+                    device.address = info.address
+                    device.port = info.port
+                    device.username = info.username
+                    device.password = info.password
+                    result = DataBase.default.viewContext.rs.saveOrRollback()
+                } else {
+                    result = Manager<Device>.default.add { (device) in
+                        device.address = info.address
+                        device.port = info.port
+                        device.username = info.username
+                        device.password = info.password
+                    }
                 }
+                
+                saving.accept(false)
+                observer.onNext(result)
+
                 return Disposables.create()
             }
         }.asDriver(onErrorJustReturn: false)
-        
-        saveEnabel = Driver.combineLatest(validInfo, saving.asDriver()).map { $0 && !$1 }
     }
 }
