@@ -13,12 +13,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var portTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var countTextField: UITextField!
+    @IBOutlet weak var updateButton: UIButton!
     let saveBarButton = UIBarButtonItem(systemItem: .save)
     
     lazy var viewModel = DetailViewModel(address: addressTextField.rx.text,
                                      port: portTextField.rx.text,
                                      username: usernameTextField.rx.text,
                                      password: passwordTextField.rx.text,
+                                     count: countTextField.rx.text,
+                                     update: updateButton.rx.tap,
                                      save: saveBarButton.rx.tap)
     
     override func viewDidLoad() {
@@ -39,6 +43,7 @@ class DetailViewController: UIViewController {
             portTextField.text = "\(device.port)"
             usernameTextField.text = device.username
             passwordTextField.text = device.password
+            countTextField.text = "\(device.channels?.count ?? 0)"
         }
 
         viewModel.saveEnabel.drive(saveBarButton.rx.isEnabled).disposed(by: rx.disposeBag)
@@ -50,6 +55,10 @@ class DetailViewController: UIViewController {
         }).disposed(by: rx.disposeBag)
         
         viewModel.saveTapped.map({ $0 ? "Success" : "Failed"}).drive(MessageBox.default.rx.message).disposed(by: rx.disposeBag)
+        
+        viewModel.$device.behaviorRelay.map({ $0 != nil }).bind(to: updateButton.rx.isEnabled).disposed(by: rx.disposeBag)
+        
+        viewModel.updateTapped.map({ $0 ? "Success" : "Failed" }).drive(MessageBox.default.rx.message).disposed(by: rx.disposeBag)
     }
 
     /*

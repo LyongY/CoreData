@@ -117,19 +117,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqy-oC-PEG">
+                                <rect key="frame" x="20" y="444" width="100" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="iET-Rh-OJC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-Rt-thX">
+                                <rect key="frame" x="140" y="446" width="30" height="30"/>
+                                <state key="normal" title="Add"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ONG-BW-85V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xNT-gk-8no" firstAttribute="top" secondItem="ONG-BW-85V" secondAttribute="top" constant="20" id="0ap-UA-NbB"/>
+                            <constraint firstItem="bqy-oC-PEG" firstAttribute="top" secondItem="Uns-tp-w4P" secondAttribute="bottom" constant="30" id="4GL-hR-kHT"/>
                             <constraint firstItem="C0F-5s-ri6" firstAttribute="top" secondItem="fHs-s3-D8r" secondAttribute="bottom" constant="30" id="4T9-Ix-MKm"/>
                             <constraint firstItem="Uns-tp-w4P" firstAttribute="top" secondItem="aUN-ZJ-uVh" secondAttribute="bottom" constant="10" id="52W-aU-Xy8"/>
+                            <constraint firstItem="a0q-Rt-thX" firstAttribute="leading" secondItem="bqy-oC-PEG" secondAttribute="trailing" constant="20" id="5qd-AJ-Ttf"/>
                             <constraint firstItem="fHs-s3-D8r" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="6Sw-k8-T5g"/>
                             <constraint firstItem="Uns-tp-w4P" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="CNU-Qu-2FW"/>
                             <constraint firstItem="ONG-BW-85V" firstAttribute="trailing" secondItem="fHs-s3-D8r" secondAttribute="trailing" constant="20" id="Czd-Pp-XNi"/>
                             <constraint firstItem="aUN-ZJ-uVh" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="FXy-Dk-Ynw"/>
                             <constraint firstItem="fHs-s3-D8r" firstAttribute="top" secondItem="xNT-gk-8no" secondAttribute="bottom" constant="10" id="Q3k-wK-0IB"/>
                             <constraint firstItem="JF1-V9-E4y" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="QTj-KB-HGF"/>
+                            <constraint firstItem="a0q-Rt-thX" firstAttribute="centerY" secondItem="bqy-oC-PEG" secondAttribute="centerY" id="Spu-vd-g0Z"/>
                             <constraint firstItem="ONG-BW-85V" firstAttribute="trailing" secondItem="XZN-bF-Ghs" secondAttribute="trailing" constant="20" id="Uhb-Yt-SRT"/>
                             <constraint firstItem="ONG-BW-85V" firstAttribute="trailing" secondItem="Uns-tp-w4P" secondAttribute="trailing" constant="20" id="V1w-5r-rmk"/>
                             <constraint firstItem="qKo-9Z-AgJ" firstAttribute="top" secondItem="JF1-V9-E4y" secondAttribute="bottom" constant="10" id="YNn-hE-lSb"/>
@@ -138,6 +153,7 @@
                             <constraint firstItem="ONG-BW-85V" firstAttribute="trailing" secondItem="qKo-9Z-AgJ" secondAttribute="trailing" constant="20" id="cAK-w7-Gae"/>
                             <constraint firstItem="aUN-ZJ-uVh" firstAttribute="top" secondItem="qKo-9Z-AgJ" secondAttribute="bottom" constant="30" id="daT-AJ-Ecy"/>
                             <constraint firstItem="qKo-9Z-AgJ" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="dhU-lg-8bv"/>
+                            <constraint firstItem="bqy-oC-PEG" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="h3w-ge-7pQ"/>
                             <constraint firstItem="JF1-V9-E4y" firstAttribute="top" secondItem="XZN-bF-Ghs" secondAttribute="bottom" constant="30" id="lmm-U5-MGv"/>
                             <constraint firstItem="xNT-gk-8no" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="svD-2g-PRZ"/>
                             <constraint firstItem="XZN-bF-Ghs" firstAttribute="leading" secondItem="ONG-BW-85V" secondAttribute="leading" constant="20" id="yDy-7o-vJW"/>
@@ -145,8 +161,10 @@
                     </view>
                     <connections>
                         <outlet property="addressTextField" destination="fHs-s3-D8r" id="QMG-at-PQK"/>
+                        <outlet property="countTextField" destination="bqy-oC-PEG" id="OGB-zq-AWZ"/>
                         <outlet property="passwordTextField" destination="Uns-tp-w4P" id="egn-lv-apH"/>
                         <outlet property="portTextField" destination="XZN-bF-Ghs" id="yqj-eS-gls"/>
+                        <outlet property="updateButton" destination="a0q-Rt-thX" id="oFJ-U6-LgQ"/>
                         <outlet property="usernameTextField" destination="qKo-9Z-AgJ" id="D4T-ie-hke"/>
                     </connections>
                 </viewController>

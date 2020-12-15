@@ -11,15 +11,18 @@ import RxCocoa
 
 class DetailViewModel {
     
-    var device: Device?
+    @RxPropertyWrapper var device: Device?
     
     let saveEnabel: Driver<Bool>
     private(set) var saveTapped: Driver<Bool>!
+    private(set) var updateTapped: Driver<Bool>!
     
     init(address: ControlProperty<String?>,
          port: ControlProperty<String?>,
          username: ControlProperty<String?>,
          password: ControlProperty<String?>,
+         count: ControlProperty<String?>,
+         update: ControlEvent<Void>,
          save: ControlEvent<Void>) {
 
         let info = Driver.combineLatest(address.orEmpty.asDriver(),
@@ -43,13 +46,7 @@ class DetailViewModel {
         saveTapped = save.withLatestFrom(info).flatMapLatest { (info) in
             Observable<Bool>.create { (observer) -> Disposable in
                 saving.accept(true)
-                
-                let device = self.device ?? Device.insertFromMain()
-                device.address = info.address
-                device.port = info.port
-                device.username = info.username
-                device.password = info.password
-                
+                                
                 var result = false
                 if let device = self.device {
                     device.address = info.address
@@ -72,5 +69,35 @@ class DetailViewModel {
                 return Disposables.create()
             }
         }.asDriver(onErrorJustReturn: false)
+        
+        updateTapped = update.withLatestFrom(count.orEmpty.asDriver())
+            .filter({ Int($0) != nil})
+            .map({ Int($0)! })
+            .flatMapLatest { (count) in
+                Observable<Bool>.create { [weak self] (observer) -> Disposable in
+                    guard let device = self?.device else {
+                        observer.onCompleted()
+                        return Disposables.create()
+                    }
+                    var result = false
+                    let currentCount = device.channels?.count ?? 0
+                    if count > currentCount {
+                        result = Manager<Channel>.default.add(count: count - currentCount) { (index, channel) in
+                            channel.number = Int64(currentCount + index)
+                            channel.device = device
+                        }
+                    } else if count < currentCount {
+                        let channels = device.channels?.map({ $0 as? Channel }).filter({ $0 != nil }).map({ $0! }).filter({ $0.number >= count }) ?? []
+                        result = Manager<Channel>.default.delete(items: channels)
+                    } else {
+                        result = true
+                    }
+                    observer.onNext(result)
+                    return Disposables.create()
+                }
+            }
+            .asDriver(onErrorJustReturn: false)
+        
+        
     }
 }
