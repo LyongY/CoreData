@@ -19,10 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         DataBase.default.load { (success) in
             if success {
-                let storyboard = self.window?.rootViewController?.storyboard
-                guard let vc = storyboard?.instantiateViewController(identifier: "DevicesViewController") as? DevicesViewController else {
-                    fatalError("Cannot instantiate root view controller")
-                }
+                let vc = RootViewController()
                 let nav = UINavigationController(rootViewController: vc)
                 self.window?.rootViewController = nav
             } else {

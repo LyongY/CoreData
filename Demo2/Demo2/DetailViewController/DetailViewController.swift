@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
             portTextField.text = "\(device.port)"
             usernameTextField.text = device.username
             passwordTextField.text = device.password
-            countTextField.text = "\(device.channels?.count ?? 0)"
+            countTextField.text = "\(device.channelArr.count)"
         }
 
         viewModel.saveEnabel.drive(saveBarButton.rx.isEnabled).disposed(by: rx.disposeBag)

@@ -80,14 +80,14 @@ class DetailViewModel {
                         return Disposables.create()
                     }
                     var result = false
-                    let currentCount = device.channels?.count ?? 0
+                    let currentCount = device.channelArr.count
                     if count > currentCount {
                         result = Manager<Channel>.default.add(count: count - currentCount) { (index, channel) in
                             channel.number = Int64(currentCount + index)
                             channel.device = device
                         }
                     } else if count < currentCount {
-                        let channels = device.channels?.map({ $0 as? Channel }).filter({ $0 != nil }).map({ $0! }).filter({ $0.number >= count }) ?? []
+                        let channels = device.channelArr.filter({ $0.number >= count })
                         result = Manager<Channel>.default.delete(items: channels)
                     } else {
                         result = true

@@ -9,8 +9,15 @@
 /* Begin PBXBuildFile section */
 		05C83F2FC1C52C38542AFB5E /* Pods_Demo2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B64E067C722DDC250D6F341C /* Pods_Demo2.framework */; };
 		19356BD7258780D2000D8764 /* DataBaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19356BD6258780D2000D8764 /* DataBaseObject.swift */; };
-		19356BE5258781C4000D8764 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19356BE4258781C4000D8764 /* Device.swift */; };
-		19356BE8258781CC000D8764 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19356BE7258781CC000D8764 /* Channel.swift */; };
+		1952CD6D25889645000E120A /* Channel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD6925889645000E120A /* Channel+CoreDataClass.swift */; };
+		1952CD6E25889645000E120A /* Device+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD6A25889645000E120A /* Device+CoreDataProperties.swift */; };
+		1952CD6F25889645000E120A /* Device+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD6825889645000E120A /* Device+CoreDataClass.swift */; };
+		1952CD7525889FBB000E120A /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD7425889FBB000E120A /* GroupViewController.swift */; };
+		1952CD7925889FE9000E120A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD7825889FE9000E120A /* RootViewController.swift */; };
+		1952CD882588AA64000E120A /* Group+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD862588AA64000E120A /* Group+CoreDataClass.swift */; };
+		1952CD892588AA64000E120A /* Group+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD872588AA64000E120A /* Group+CoreDataProperties.swift */; };
+		1952CD8A2588AA64000E120A /* Channel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD852588AA63000E120A /* Channel+CoreDataProperties.swift */; };
+		1952CD972588AFD0000E120A /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1952CD962588AFD0000E120A /* GroupViewModel.swift */; };
 		195553082580E8A400EE4F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195553072580E8A400EE4F44 /* AppDelegate.swift */; };
 		1955530A2580E8A400EE4F44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195553092580E8A400EE4F44 /* SceneDelegate.swift */; };
 		1955530C2580E8A400EE4F44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1955530B2580E8A400EE4F44 /* ViewController.swift */; };
@@ -37,8 +44,15 @@
 
 /* Begin PBXFileReference section */
 		19356BD6258780D2000D8764 /* DataBaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseObject.swift; sourceTree = "<group>"; };
-		19356BE4258781C4000D8764 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		19356BE7258781CC000D8764 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		1952CD6825889645000E120A /* Device+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Device+CoreDataClass.swift"; path = "/Users/yly/Desktop/CoreData/Demo2/Demo2/Model/Device+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		1952CD6925889645000E120A /* Channel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Channel+CoreDataClass.swift"; path = "/Users/yly/Desktop/CoreData/Demo2/Demo2/Model/Channel+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		1952CD6A25889645000E120A /* Device+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Device+CoreDataProperties.swift"; path = "/Users/yly/Desktop/CoreData/Demo2/Demo2/Model/Device+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		1952CD7425889FBB000E120A /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		1952CD7825889FE9000E120A /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		1952CD852588AA63000E120A /* Channel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Channel+CoreDataProperties.swift"; path = "/Users/yly/Desktop/CoreData/Demo2/Demo2/Model/Channel+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		1952CD862588AA64000E120A /* Group+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Group+CoreDataClass.swift"; path = "/Users/yly/Desktop/CoreData/Demo2/Demo2/Model/Group+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		1952CD872588AA64000E120A /* Group+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Group+CoreDataProperties.swift"; path = "/Users/yly/Desktop/CoreData/Demo2/Demo2/Model/Group+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		1952CD962588AFD0000E120A /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		195553042580E8A400EE4F44 /* Demo2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		195553072580E8A400EE4F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		195553092580E8A400EE4F44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,10 +106,23 @@
 		19356BE3258781AB000D8764 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19356BE4258781C4000D8764 /* Device.swift */,
-				19356BE7258781CC000D8764 /* Channel.swift */,
+				1952CD6825889645000E120A /* Device+CoreDataClass.swift */,
+				1952CD6A25889645000E120A /* Device+CoreDataProperties.swift */,
+				1952CD6925889645000E120A /* Channel+CoreDataClass.swift */,
+				1952CD852588AA63000E120A /* Channel+CoreDataProperties.swift */,
+				1952CD862588AA64000E120A /* Group+CoreDataClass.swift */,
+				1952CD872588AA64000E120A /* Group+CoreDataProperties.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1952CD7325889F8A000E120A /* GroupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1952CD7425889FBB000E120A /* GroupViewController.swift */,
+				1952CD962588AFD0000E120A /* GroupViewModel.swift */,
+			);
+			path = GroupViewController;
 			sourceTree = "<group>";
 		};
 		195552FB2580E8A400EE4F44 = {
@@ -125,7 +152,9 @@
 				1955532A2580EEEF00EE4F44 /* CoreData */,
 				1988FB312581F3A200C0FA98 /* DevicesViewController */,
 				1988FB322581F3C500C0FA98 /* DetailViewController */,
+				1952CD7325889F8A000E120A /* GroupViewController */,
 				1988FB012581B61000C0FA98 /* UIViewController+Storyboard.swift */,
+				1952CD7825889FE9000E120A /* RootViewController.swift */,
 				195553262580EDFE00EE4F44 /* Launch */,
 			);
 			path = Demo2;
@@ -311,27 +340,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1952CD7525889FBB000E120A /* GroupViewController.swift in Sources */,
+				1952CD892588AA64000E120A /* Group+CoreDataProperties.swift in Sources */,
 				1988FB2C2581F03400C0FA98 /* Managed.swift in Sources */,
 				19C548512584A74C00109ADA /* MessageBox+Rx.swift in Sources */,
 				19C548572584AF8000109ADA /* RS.swift in Sources */,
 				195553212580EAE500EE4F44 /* DevicesViewController.swift in Sources */,
+				1952CD6F25889645000E120A /* Device+CoreDataClass.swift in Sources */,
 				19356BD7258780D2000D8764 /* DataBaseObject.swift in Sources */,
+				1952CD972588AFD0000E120A /* GroupViewModel.swift in Sources */,
+				1952CD8A2588AA64000E120A /* Channel+CoreDataProperties.swift in Sources */,
 				1955530C2580E8A400EE4F44 /* ViewController.swift in Sources */,
 				19C548542584AF1800109ADA /* NSManagedObjectContext+DataBase.swift in Sources */,
-				19356BE8258781CC000D8764 /* Channel.swift in Sources */,
 				19C5484E2584A65100109ADA /* MessageBox.swift in Sources */,
+				1952CD882588AA64000E120A /* Group+CoreDataClass.swift in Sources */,
 				1955531E2580E8E100EE4F44 /* Demo2.xcdatamodeld in Sources */,
 				195553242580EB7300EE4F44 /* DetailViewController.swift in Sources */,
 				1988FB282581E93600C0FA98 /* DevicesViewControllerCell.swift in Sources */,
+				1952CD6E25889645000E120A /* Device+CoreDataProperties.swift in Sources */,
+				1952CD7925889FE9000E120A /* RootViewController.swift in Sources */,
 				1955532C2580EF3600EE4F44 /* DataBase.swift in Sources */,
 				195553082580E8A400EE4F44 /* AppDelegate.swift in Sources */,
 				1955530A2580E8A400EE4F44 /* SceneDelegate.swift in Sources */,
 				1988FB342581F40400C0FA98 /* DetailViewModel.swift in Sources */,
 				1988FB112581C1B400C0FA98 /* DevicesViewModel.swift in Sources */,
+				1952CD6D25889645000E120A /* Channel+CoreDataClass.swift in Sources */,
 				1988FB022581B61000C0FA98 /* UIViewController+Storyboard.swift in Sources */,
 				1988FB192581CC3D00C0FA98 /* RxPropertyWrapper.swift in Sources */,
 				1988FB152581C39200C0FA98 /* Manager.swift in Sources */,
-				19356BE5258781C4000D8764 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

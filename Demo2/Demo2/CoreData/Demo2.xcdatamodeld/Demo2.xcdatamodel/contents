@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Channel" representedClassName=".Channel" syncable="YES" codeGenerationType="category">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Channel" representedClassName=".Channel" syncable="YES">
         <attribute name="number" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Device" inverseName="channels" inverseEntity="Device"/>
+        <relationship name="group" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="channels" inverseEntity="Group"/>
     </entity>
-    <entity name="Device" representedClassName=".Device" syncable="YES" codeGenerationType="category">
+    <entity name="Device" representedClassName=".Device" syncable="YES">
         <attribute name="address" attributeType="String" defaultValueString=""/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="password" attributeType="String" defaultValueString=""/>
         <attribute name="port" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="uid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="username" attributeType="String" defaultValueString=""/>
-        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Channel" inverseName="device" inverseEntity="Channel"/>
+        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Channel" inverseName="device" inverseEntity="Channel"/>
+    </entity>
+    <entity name="Group" representedClassName=".Group" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="uid" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Channel" inverseName="group" inverseEntity="Channel"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="-54" positionY="-9" width="128" height="74"/>
+        <element name="Channel" positionX="-54" positionY="-9" width="128" height="89"/>
         <element name="Device" positionX="-63" positionY="-18" width="128" height="134"/>
+        <element name="Group" positionX="-54" positionY="45" width="128" height="74"/>
     </elements>
 </model>
